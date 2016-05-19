@@ -1,8 +1,8 @@
 #!/bin/bash
 #########################################################################
-# set_overscan.sh v0.10
+# set_overscan.sh v0.17
 # Modify overscan on the fly.                                            
-# By Russell "ukscone" Davis using code from Broadcom, Dom Cobley & Alex Bradbury
+# By Patrick Pigmans using code from Broadcom, Dom Cobley, Alex Bradbury & Russell "ukscone" Davis
 # 2013-03-10, 2014-07-23 2015-05-01
 #   
 # There is very little, ok no error/sanity checking. I've left that as an exercise
