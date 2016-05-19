@@ -131,10 +131,6 @@ TYRES=$(stty size | awk -F ' ' '{print $1}')
 XMIDPOINT=$((TXRES/2))
 YMIDPOINT=$((TYRES/2))
 
-# Create some random data & zero'ed data
-head -c $BYTES < /dev/urandom > rand
-head -c $BYTES </dev/zero > cleared
-
 ########################################################################
 # Main()
 ########################################################################
