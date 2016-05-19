@@ -113,7 +113,7 @@ if [ ! -c /dev/vcio ]; then
 fi
 
 # Get current overscan values from GPU
-TEMP=$(./overscan)
+TEMP=$(/root/set_overscan/overscan)
 GPU_OVERSCAN_TOP=$(echo "$TEMP" | awk -F ' ' '{print $1}')
 GPU_OVERSCAN_BOTTOM=$(echo "$TEMP" | awk -F ' ' '{print $2}')
 GPU_OVERSCAN_LEFT=$(echo "$TEMP" | awk -F ' ' '{print $3}')
@@ -150,7 +150,7 @@ clear
 tput civis
 
 # Dump some random data to /dev/fb0
-cat rand >/dev/fb0
+#cat rand >/dev/fb0
 
 # Set overscan top-left corner
 LOOP=1
@@ -170,7 +170,7 @@ while [ $LOOP -eq 1 ]; do
 		"161") LOOP=0;; 
     	esac
 
-	./overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
+	/root/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
 done
 
 # Clear the screen
@@ -185,7 +185,7 @@ clear
 tput civis
 
 # Dump some random data to /dev/fb0
-cat rand >/dev/fb0
+#cat rand >/dev/fb0
 
 # Set overscan bottom-right corner
 LOOP=1
@@ -205,7 +205,7 @@ while [ $LOOP -eq 1 ]; do
         	"$tty_cuf1"|"$tty_kcuf1"|"$tty_cufx") ((GPU_OVERSCAN_RIGHT--));;
         	"161") LOOP=0;;
     	esac
-	./overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
+	/root/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
 
 done
 
