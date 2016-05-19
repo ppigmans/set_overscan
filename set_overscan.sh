@@ -174,8 +174,8 @@ while [ $LOOP -eq 1 ]; do
 done
 
 # Clear the screen
-cat cleared >/dev/fb0
-clear
+#cat cleared >/dev/fb0
+#clear
 
 # Going to modify bottom-right overscan
 whiptail --title "Instructions" --msgbox "We are going to dump some random data to the screen. Once the screen is full of random coloured dots use the arrow keys to increase or decrease the bottom-right corner's overscan & press the q key when finished." 12 50
@@ -224,8 +224,8 @@ set_config_var overscan_right $GPU_OVERSCAN_RIGHT $CONFIG
 if [ $created_mailbox -eq 1 ]; then
 	rm -f /dev/vcio
 fi
-rm rand
-rm cleared
+#rm rand
+#rm cleared
 
 # Restore stty to old value
 stty $tty_save
