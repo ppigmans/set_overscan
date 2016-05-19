@@ -78,15 +78,6 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 #########################################################################
-# Is overscan enabled? If not the fix it & reboot                       #
-#########################################################################
-if [ "$(vcgencmd get_config disable_overscan | awk -F '=' '{print $2}')" -eq "1" ]; then
-        set_config_var disable_overscan 0 $CONFIG
-        whiptail --msgbox  "disable_overscan=0 added to config.txt, overscan will be enabled on next reboot. reboot & then rerun this script." 10 45
-        exit 1
-fi
-
-#########################################################################
 # Variables & Constants & create some files                             #
 #########################################################################
 # Grab terminal capabilities
@@ -149,9 +140,6 @@ clear
 # We don't need no cursor messing up my pretty screen
 tput civis
 
-# Dump some random data to /dev/fb0
-#cat rand >/dev/fb0
-
 # Set overscan top-left corner
 LOOP=1
 while [ $LOOP -eq 1 ]; do
@@ -173,9 +161,6 @@ while [ $LOOP -eq 1 ]; do
 	/root/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
 done
 
-# Clear the screen
-#cat cleared >/dev/fb0
-#clear
 
 # Going to modify bottom-right overscan
 whiptail --title "Instructions" --msgbox "We are going to dump some random data to the screen. Once the screen is full of random coloured dots use the arrow keys to increase or decrease the bottom-right corner's overscan & press the q key when finished." 12 50
@@ -184,8 +169,6 @@ clear
 # No cursor messing up my pretty screen
 tput civis
 
-# Dump some random data to /dev/fb0
-#cat rand >/dev/fb0
 
 # Set overscan bottom-right corner
 LOOP=1
@@ -224,8 +207,6 @@ set_config_var overscan_right $GPU_OVERSCAN_RIGHT $CONFIG
 if [ $created_mailbox -eq 1 ]; then
 	rm -f /dev/vcio
 fi
-#rm rand
-#rm cleared
 
 # Restore stty to old value
 stty $tty_save
