@@ -73,7 +73,7 @@ mv "$3.bak" "$3"
 #########################################################################
 # Make sure only root can run our script
 if [[ $EUID -ne 0 ]]; then
-        echo "This script must be run by root or using sudo" 1>&2
+        echo "Dit script moet uitgevoerd worden als root of via sudo" 1>&2
         exit 1
 fi
 
@@ -133,7 +133,7 @@ stty intr '' susp ''
 trap 'stty $tty_save; tput cnorm ; exit'  INT HUP TERM
 
 # Going to modify top-left overscan
-whiptail --title "Instructions" --msgbox "We are going to dump some random data to the screen. Once the screen is full of random coloured dots use the arrow keys to increase or decrease the top-left corner's overscan & press the q key when finished." 12 50
+whiptail --title "Instructions" --msgbox "Gebruik de pijltjes toetsen om de randen recht en van boven weg te halen. Druk op Q als u klaar bent" 12 50
 
 clear
 
@@ -163,7 +163,7 @@ done
 
 
 # Going to modify bottom-right overscan
-whiptail --title "Instructions" --msgbox "We are going to dump some random data to the screen. Once the screen is full of random coloured dots use the arrow keys to increase or decrease the bottom-right corner's overscan & press the q key when finished." 12 50
+whiptail --title "Instructions" --msgbox "Gebruik de pijltjes toetsen om de randen recht en van boven weg te halen. Druk op Q om dit op te slaan" 12 50
 
 clear
 # No cursor messing up my pretty screen
