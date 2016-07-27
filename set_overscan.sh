@@ -104,7 +104,7 @@ if [ ! -c /dev/vcio ]; then
 fi
 
 # Get current overscan values from GPU
-TEMP=$(/root/set_overscan/overscan)
+TEMP=$(/usr/bin/set_overscan/overscan)
 GPU_OVERSCAN_TOP=$(echo "$TEMP" | awk -F ' ' '{print $1}')
 GPU_OVERSCAN_BOTTOM=$(echo "$TEMP" | awk -F ' ' '{print $2}')
 GPU_OVERSCAN_LEFT=$(echo "$TEMP" | awk -F ' ' '{print $3}')
@@ -158,7 +158,7 @@ while [ $LOOP -eq 1 ]; do
 		"161") LOOP=0;; 
     	esac
 
-	/root/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
+	/usr/bin/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
 done
 
 
@@ -188,7 +188,7 @@ while [ $LOOP -eq 1 ]; do
         	"$tty_cuf1"|"$tty_kcuf1"|"$tty_cufx") ((GPU_OVERSCAN_RIGHT--));;
         	"161") LOOP=0;;
     	esac
-	/root/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
+	/usr/bin/set_overscan/overscan $GPU_OVERSCAN_TOP $GPU_OVERSCAN_BOTTOM $GPU_OVERSCAN_LEFT $GPU_OVERSCAN_RIGHT
 
 done
 
